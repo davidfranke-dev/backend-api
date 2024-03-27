@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Document(collection = "appointments")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,9 +18,9 @@ public class Appointment {
     @Id
     private ObjectId id;
 
-    private String startTime;
+    private LocalDateTime startTime;
 
-    private String endTime;
+    private LocalDateTime endTime;
 
     private String patientId;
 
@@ -26,11 +28,14 @@ public class Appointment {
 
     private String subject;
 
-    public Appointment(String startTime, String endTime, String patientId, String doctorId, String subject) {
+    private ObjectId appointmentCategoryId;
+
+    public Appointment(LocalDateTime startTime, LocalDateTime endTime, String patientId, String doctorId, String subject, ObjectId appointmentCategoryId) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.patientId = patientId;
         this.doctorId = doctorId;
         this.subject = subject;
+        this.appointmentCategoryId = appointmentCategoryId;
     }
 }   

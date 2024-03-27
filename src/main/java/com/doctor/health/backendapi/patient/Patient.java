@@ -1,5 +1,6 @@
 package com.doctor.health.backendapi.patient;
 
+import java.util.Date;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -18,30 +19,42 @@ public class Patient {
     @Id
     private ObjectId id;
 
+
+
     private String firstName;
 
     private String lastName;
 
-    private String birthday;
+    private Date birthday;
 
-    private Character gender;
+    private String telephone;
 
-    private Double height;
+    private String city;
 
-    private Double weight;
+    private String zip;
 
-    private List<Integer> allergies;
+//    private Character gender;
 
-    private List<Integer> conditions;
+//    private Double height;
+//
+//    private Double weight;
+
+//    private List<Integer> allergies;
+//
+//    private List<Integer> conditions;
 
 
-    public Patient(String firstName, String lastName, Character gender, Double height, double weight, List<Integer> allergies, List<Integer> conditions) {
+    public Patient(String firstName, String lastName, Date birthday, String city, String zip, String telephone) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.gender = gender;
-        this.height = height;
-        this.weight = weight;
-        this.allergies = allergies;
-        this.conditions = conditions;
+        this.birthday = birthday;
+        this.city = city;
+        this.zip = zip;
+        this.telephone = telephone;
+//        this.gender = gender;
+//        this.height = height;
+//        this.weight = weight;
+//        this.allergies = allergies;
+//        this.conditions = conditions;
     }
 }   

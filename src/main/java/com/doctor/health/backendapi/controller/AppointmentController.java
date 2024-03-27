@@ -5,9 +5,11 @@ import org.springframework.web.bind.annotation.*;
 import com.doctor.health.backendapi.appointment.Appointment;
 import com.doctor.health.backendapi.appointment.AppointmentService;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,7 @@ public class AppointmentController {
     private AppointmentService appointmentService;
 
 
+
     @GetMapping
     public ResponseEntity<List<Appointment>> allAppointments() {
         return new ResponseEntity<List<Appointment>>(appointmentService.allAppointments(), HttpStatus.OK);
@@ -31,13 +34,19 @@ public class AppointmentController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Appointment>> getAppointment(@PathVariable ObjectId id) {
-        System.out.println(id);
         return new ResponseEntity<Optional<Appointment>>(appointmentService.getSingleAppointment(id), HttpStatus.OK);
     }
 
+    @GetMapping("/category/{categoryId}/available")
+    public ResponseEntity<List<LocalDateTime>> getAvailableAppointments(@PathVariable ObjectId categoryId) {
+        System.out.println("Request received.");
+        return new ResponseEntity<List<LocalDateTime>>(appointmentService.getAvailableAppointments(categoryId), HttpStatus.OK);
+    }
+
+
     @PostMapping
-    public ResponseEntity<Appointment> createAppointment(@RequestBody Map<String, String> payload) {
-        return new ResponseEntity<Appointment>(appointmentService.createAppointment(payload), HttpStatus.CREATED);
+    public ResponseEntity<Appointment> createAppointment(@RequestBody Appointment appointment) {
+        return new ResponseEntity<Appointment>(appointmentService.createAppointment(appointment), HttpStatus.CREATED);
     }
     
     @PutMapping("/{id}") 

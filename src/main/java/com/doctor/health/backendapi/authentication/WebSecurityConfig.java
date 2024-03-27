@@ -18,10 +18,6 @@ import com.doctor.health.backendapi.authentication.security.jwt.AuthEntryPointJw
 import com.doctor.health.backendapi.authentication.security.jwt.AuthTokenFilter;
 import com.doctor.health.backendapi.authentication.security.services.UserDetailsServiceImpl;
 
-// import com.bezkoder.spring.security.mongodb.security.jwt.AuthEntryPointJwt;
-// import com.bezkoder.spring.security.mongodb.security.jwt.AuthTokenFilter;
-// import com.bezkoder.spring.security.mongodb.security.services.UserDetailsServiceImpl;
-
 
 @Configuration
 //@EnableWebSecurity
